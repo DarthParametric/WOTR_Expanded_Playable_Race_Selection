@@ -1,0 +1,26 @@
+{
+  "LocalizedStrings": [
+    {
+      "Key": "68ff8600324a4e2387d26780cddd6e59",
+      "SimpleName": "DPDrow_Description",
+      "ProcessTemplates": false,
+      "enGB": "Cruel and cunning, drow are a dark reflection of the elven race. Also called dark elves, they dwell deep underground in elaborate cities shaped from the rock of cyclopean caverns. Drow seldom make themselves known to surface folk, preferring to remain legends while advancing their sinister agendas through proxies and agents. Drow have no love for anyone but themselves, and are adept at manipulating other creatures. While they are not born evil, malignancy is deep-rooted in their culture and society, and nonconformists rarely survive for long. Some stories tell that given the right circumstances, a particularly hateful elf might turn into a drow, though such a transformation would require a truly heinous individual.",
+      "ruRU": "Жестокие и хитрые, дроу являются темным отражением эльфийской расы. Также называемые темными эльфами, они живут глубоко под землей в сложных городах, высеченных из скал циклопических пещер. Дроу редко дают о себе знать на поверхности, предпочитая оставаться легендами, продвигая свои зловещие планы через доверенных лиц и агентов. Дроу не любят никого, кроме себя, и искусны в манипулировании другими существами. Хотя они не рождаются злыми, злобность глубоко укоренилась в их культуре и обществе, и нонконформисты редко выживают долго. Некоторые истории рассказывают, что при правильных обстоятельствах особенно ненавистный эльф может превратиться в дроу, хотя для такой трансформации потребуется по-настоящему отвратительный человек.",
+      "deDE": "Die grausamen und gerissenen Drow sind ein dunkles Spiegelbild der Elfenrasse. Sie werden auch Dunkelelfen genannt und leben tief unter der Erde in kunstvollen Städten, die aus dem Gestein zyklopischer Höhlen geformt wurden. Die Drow zeigen sich den Menschen an der Oberfläche nur selten, sondern bleiben lieber Legenden, während sie ihre finsteren Pläne durch Stellvertreter und Agenten vorantreiben. Die Drow lieben niemanden außer sich selbst und sind geschickt darin, andere Kreaturen zu manipulieren. Obwohl sie nicht böse geboren werden, ist die Bösartigkeit tief in ihrer Kultur und Gesellschaft verwurzelt, und Nonkonformisten überleben selten lange. Einige Geschichten erzählen, dass sich unter den richtigen Umständen ein besonders hasserfüllter Elf in einen Drow verwandeln könnte, obwohl eine solche Verwandlung ein wirklich abscheuliches Individuum erfordern würde.",
+      "frFR": "Cruels et rusés, les drows sont un reflet sombre de la race elfique. Aussi appelés elfes noirs, ils vivent dans les profondeurs de la terre, dans des cités élaborées taillées dans la roche des cavernes cyclopéennes. Les drows se font rarement connaître des gens de la surface, préférant rester des légendes tout en faisant avancer leurs sinistres desseins par l'intermédiaire de mandataires et d'agents. Les drows n'aiment personne d'autre qu'eux-mêmes et sont experts dans la manipulation des autres créatures. Bien qu'ils ne soient pas nés mauvais, la malignité est profondément enracinée dans leur culture et leur société, et les non-conformistes survivent rarement longtemps. Certaines histoires racontent que dans certaines circonstances, un elfe particulièrement détestable peut se transformer en drow, bien qu'une telle transformation nécessite un individu vraiment odieux.",
+      "zhCN": "黑暗精灵残忍狡猾，是精灵种族的黑暗映射。他们也被称为黑暗精灵，居住在由巨石洞穴的岩石塑造的复杂城市中，深藏地下。黑暗精灵很少向地表人类表明自己的身份，他们宁愿保持传奇，同时通过代理人和特工推进他们的邪恶计划。黑暗精灵除了自己之外不爱任何人，并且善于操纵其他生物。虽然他们并非生来邪恶，但恶意在他们的文化和社会中根深蒂固，不墨守成规的人很少能存活很久。有些故事说，在适当的情况下，一个特别可恶的精灵可能会变成黑暗精灵，尽管这样的转变需要一个真正邪恶的人。",
+      "esES": "Crueles y astutos, los drow son un reflejo oscuro de la raza élfica. También llamados elfos oscuros, habitan en las profundidades subterráneas en elaboradas ciudades formadas a partir de la roca de cavernas ciclópeas. Los drow rara vez se dan a conocer a la gente de la superficie, prefiriendo seguir siendo leyendas mientras avanzan con sus siniestras agendas a través de apoderados y agentes. Los drow no sienten amor por nadie más que por ellos mismos y son expertos en manipular a otras criaturas. Si bien no nacen malvados, la malignidad está profundamente arraigada en su cultura y sociedad, y los inconformistas rara vez sobreviven por mucho tiempo. Algunas historias cuentan que, dadas las circunstancias adecuadas, un elfo particularmente odioso podría convertirse en un drow, aunque tal transformación requeriría un individuo verdaderamente atroz."
+    },
+    {
+      "Key": "30cdf1763c814fecb10ddf6ce41c4ba0",
+      "SimpleName": "DPDrow_DisplayName",
+      "ProcessTemplates": false,
+      "enGB": "Drow",
+      "ruRU": "Темный Эльф",
+      "deDE": "Dunkelelf",
+      "frFR": "Elfe Noir",
+      "zhCN": "黑暗精灵",
+      "esES": "Elfo Oscuro"
+    }
+  ]
+}

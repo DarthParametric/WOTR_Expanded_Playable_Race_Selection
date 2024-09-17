@@ -1,0 +1,12 @@
+﻿{
+  "Id": "DP_WOTR_PlayableRaceExp",
+  "DisplayName": "Expanded Playable Race Selection",
+  "Author": "DarthParametric",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.29.0",
+  "Requirements": [],
+  "AssemblyName": "DP_WOTR_PlayableRaceExp.dll",
+  "EntryMethod": "DP_WOTR_PlayableRaceExp.Main.Load",
+  "HomePage": "https://github.com/DarthParametric/WOTR_Expanded_Playable_Race_Selection",
+  "Repository": "https://github.com/DarthParametric/WOTR_Expanded_Playable_Race_Selection"
+}
