@@ -26,9 +26,9 @@ namespace DP_WOTR_PlayableRaceExp.Races
 			Main.RaceExpContext.Logger.Log("Creating blueprints for added Drow race.");
 
 			var OrigElf = RaceRefs.ElfRace;
-#if DEBUG
+
 			Main.RaceExpContext.Logger.LogDebug($"Cloning original race blueprint {OrigElf.name}.");
-#endif
+
 			// Copy vanilla XYZRace blueprint and replace its values.
 			DPDrowRace = Helpers.CreateCopyAlt<BlueprintRace>(OrigElf, race => {
 				race.name = "DPDrow";
@@ -47,6 +47,7 @@ namespace DP_WOTR_PlayableRaceExp.Races
 				// 03fd1e043fc678a4baf73fe67c3780ce - Elven Weapon Familiarity
 				// 5482f879dcfd40f9a3168fdb48bc938c - Elven Heritage Selection
 
+				// Example from original BubbleRaces code, added Grippli race.
 				//race.m_Features = Helpers.Arr(camouflageFeature.BaseRef(), defTrainingFeature.BaseRef(), grippliHeritage.BaseRef());
 
 				// Empty the "Components" array. This defines racial stat bonuses/penalties.
@@ -61,18 +62,18 @@ namespace DP_WOTR_PlayableRaceExp.Races
 				// The "m_Skin" field in the presets point to the KEE_Body_XYZ blueprint, which defines the body meshes.
 				var skin = Helpers.CreateCopyAlt(race.m_Presets[0].Get().Skin, skin => {
 					skin.name = skin.name.Replace("Elf", "DPDrow");
-#if DEBUG
+
 					Main.RaceExpContext.Logger.LogDebug($"Creating body KEE:");
-#endif
+
 					skin.AssetGuid = Main.RaceExpContext.Blueprints.GetGUID(skin.name);
 					BlueprintTools.AddBlueprint(Main.RaceExpContext, skin);
 
 					// Body model arrays. Points to the AssetID of the body models EE in the KEE_Body_XYZ blueprint.
 					originalBodyM = skin.m_MaleArray[0];
 					originalBodyF = skin.m_FemaleArray[0];
-#if DEBUG
+
 					Main.RaceExpContext.Logger.LogDebug("Adding body EEs to VisualPresets:");
-#endif
+
 					skin.m_MaleArray = Helpers.Arr(new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_body01_m_de")});
 					skin.m_FemaleArray = Helpers.Arr(new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_body01_f_de")});
 
@@ -87,53 +88,24 @@ namespace DP_WOTR_PlayableRaceExp.Races
 					for (var i = 0; i < skin.m_FemaleArray.Length; i++)
 					{
 						var id = skin.m_FemaleArray[i].AssetId;
-#if DEBUG
+
 					Main.RaceExpContext.Logger.LogDebug($"Female AssetID: {id}, {EE_Names_IDs.Get_EE_Name(id)}");
-#endif
+
 					}
 				});
 
-				// This section patches the textures of the vanilla bodies, in this case replacing the normal maps.
-				// Unneeded in this case due to using vanilla assets.
-				/*
-				Action<UnityEngine.Object> MakeBodyPatch(EquipmentEntityLink original) {
-					return obj => {
-						var entity = obj as EquipmentEntity;
-						var from = original.Load(false);
-
-						// Parses the "BodyParts" 
-						entity.BodyParts = new(from.BodyParts);
-
-						foreach (var bp in entity.BodyParts)
-						{
-#if DEBUG
-							Main.RaceExpContext.Logger.LogDebug($"skin body part.type: {bp.Type}");
-							Main.RaceExpContext.Logger.LogDebug($"skin body part.renderer: {bp.RendererPrefab?.name ?? "<missing>"}");
-#endif
-							bp.Textures = new(bp.Textures);
-							if (bp.Textures.Count > 0 && bp.Textures[0].NormalActive)
-								bp.Textures[0].NormalTexture = new Texture2DLink { AssetId = "8e662dafd4534f54c936d3ff4e80ebeb" }.Load(false);
-						}
-					};
-
-				}
-
-				Main.AssetPatcher.LoadActions["44d4e305c9b84264aa7edc88f107fe6b"] = MakeBodyPatch(originalBodyM);
-				Main.AssetPatcher.LoadActions["eb94c1363f07c4149a1d718eeed79ae7"] = MakeBodyPatch(originalBodyF);
-				*/
-
 				// Create a set of new unique VisualPreset blueprints based on the donor race originals.
-#if DEBUG
+
 				Main.RaceExpContext.Logger.LogDebug("Creating VisualPreset blueprints:");
-#endif
+
 				for (int i = 0; i < presets.Length; i++)
 				{
 					// TTT's version of CreateCopy (actually ObjectDeepCopier which it calls) causes
 					// a stack overflow if used here. Use the older version instead.
 					presets[i] = Helpers.CreateCopyAlt(race.m_Presets[i].Get(), p => {
-#if DEBUG
+
 						Main.RaceExpContext.Logger.LogDebug($"New preset {i} (original name {p.name}):");
-#endif
+
 						p.name = p.name.Replace("Elf", "DPDrow");
 						p.AssetGuid = Main.RaceExpContext.Blueprints.GetGUID(p.name);
 						BlueprintTools.AddBlueprint(Main.RaceExpContext, p);
@@ -144,27 +116,27 @@ namespace DP_WOTR_PlayableRaceExp.Races
 
 				// Adds the newly created VisualPresets to the "m_Presets" array in the new base race blueprint.
 				race.m_Presets = presets.Select(p => p.ToReference<BlueprintRaceVisualPresetReference>()).ToArray();
-#if DEBUG
+
 				Main.RaceExpContext.Logger.LogDebug("Adding racial stat bonuses:");
-#endif
+
 				// Populate the base race blueprint "Components" array. This allows for defining custom racial stat bonuses/penalties.
 				// +2 Dex.
 				race.AddComponent<AddStatBonus>(stat => {
 					stat.Descriptor = ModifierDescriptor.Racial;
 					stat.Value = 2;
 					stat.Stat = StatType.Dexterity;
-#if DEBUG
+
 					Main.RaceExpContext.Logger.LogDebug($"{stat.Stat} = {string.Format("{0:+#;-#;+0}", stat.Value)}");
-#endif
+
 				});
 				// +2 Cha.
 				race.AddComponent<AddStatBonus>(stat => {
 					stat.Descriptor = ModifierDescriptor.Racial;
 					stat.Value = 2;
 					stat.Stat = StatType.Charisma;
-#if DEBUG
+
 					Main.RaceExpContext.Logger.LogDebug($"{stat.Stat} = {string.Format("{0:+#;-#;+0}", stat.Value)}");
-#endif
+
 				});
 				// -2 Con.
 				race.AddComponent<AddStatBonusIfHasFact>(stat => {
@@ -174,15 +146,15 @@ namespace DP_WOTR_PlayableRaceExp.Races
 					// This checked fact for stat penalties allows them to be removed with the "Destiny Beyond Birth" mythic feat.
 					stat.m_CheckedFacts = Helpers.Arr(BlueprintTools.Ref<BlueprintUnitFactReference>("325f078c584318849bfe3da9ea245b9d"));
 					stat.InvertCondition = true;
-#if DEBUG
+
 					Main.RaceExpContext.Logger.LogDebug($"{stat.Stat} = {string.Format("{0:+#;-#;+0}", stat.Value)}");
-#endif
+
 				});
 
 				race.SelectableRaceStat = false;
-#if DEBUG
+
 				Main.RaceExpContext.Logger.LogDebug("Adding body part EEs.");
-#endif
+
 				// Populate "MaleOptions" / "FemaleOptions" arrays, which define available body part options in the character creator.
 				race.MaleOptions.Beards = Array.Empty<EquipmentEntityLink>();
 				race.MaleOptions.Horns = Array.Empty<EquipmentEntityLink>();
@@ -250,9 +222,9 @@ namespace DP_WOTR_PlayableRaceExp.Races
 			});
 
 			// Create new racial default portraits in the character creator.
-#if DEBUG
+
 			Main.RaceExpContext.Logger.LogDebug("Creating portrait presets:");
-#endif
+
 			var portraitmale = Helpers.CreateBlueprint<BlueprintPortrait>(Main.RaceExpContext, "DPDrow_PortraitMale", p => {
 				p.Data = new()
 				{
@@ -286,15 +258,14 @@ namespace DP_WOTR_PlayableRaceExp.Races
 			});
 
 			Helpers.AppendInPlace(ref BlueprintRoot.Instance.CharGen.m_Portraits, portraitfem.ToReference<BlueprintPortraitReference>());
-#if DEBUG
+
 			Main.RaceExpContext.Logger.LogDebug("Creating race blueprint:");
-#endif
+
 			BlueprintTools.AddBlueprint(Main.RaceExpContext, DPDrowRace);
 
 			Helpers.AppendInPlace(ref Races, DPDrowRace.ToReference<BlueprintRaceReference>());
-#if DEBUG
+
 			Main.RaceExpContext.Logger.LogDebug("Installation of added Drow race complete.");
-#endif
 		}
 
 		public static void Uninstall()
