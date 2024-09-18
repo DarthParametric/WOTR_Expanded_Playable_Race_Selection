@@ -5,11 +5,10 @@ using Kingmaker.Localization;
 using Kingmaker.Localization.Shared;
 using Kingmaker.PubSubSystem;
 using Newtonsoft.Json;
-using System.Linq;
 
 namespace DP_WOTR_PlayableRaceExp.Localization {
     /// <summary>
-    /// Contains and manages localization for all available langauges.
+    /// Contains and manages localization for all available languages.
     /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
     public class MultiLocalizationPack : ILocaleChangedHandler,
@@ -21,7 +20,7 @@ namespace DP_WOTR_PlayableRaceExp.Localization {
             this.Context = context;
         }
         /// <summary>
-        /// Dictionary of extisting strings of enGB text and corresponding MultiLocaleStrings.
+        /// Dictionary of existing strings of enGB text and corresponding MultiLocaleStrings.
         /// </summary>
         public SortedDictionary<string, MultiLocaleString> Text {
             get {
@@ -35,7 +34,7 @@ namespace DP_WOTR_PlayableRaceExp.Localization {
             }
         }
         /// <summary>
-        /// Dictionary of extisting LocalizedString Ids and corresponding MultiLocaleStrings.
+        /// Dictionary of existing LocalizedString Ids and corresponding MultiLocaleStrings.
         /// </summary>
         public SortedDictionary<string, MultiLocaleString> Ids {
             get {
@@ -63,14 +62,14 @@ namespace DP_WOTR_PlayableRaceExp.Localization {
             text = null;
         }
         /// <summary>
-        /// Clears unsued strings from the localization pack.
+        /// Clears unused strings from the localization pack.
         /// </summary>
         public void RemoveUnused() {
             Strings = Strings.Where(s => s.IsUsed).ToList();
             ResetCache();
         }
         /// <summary>
-        /// Gets the MultiLocaleString assosiated with the entered text.
+        /// Gets the MultiLocaleString associated with the entered text.
         /// </summary>
         /// <param name="text">
         /// Text to search for in the current cache.
@@ -85,6 +84,7 @@ namespace DP_WOTR_PlayableRaceExp.Localization {
         public bool TryGetText(string text, out MultiLocaleString result, Locale locale = Locale.enGB) {
             return Text.TryGetValue(text, out result);
         }
+
         /// <summary>
         /// Adds the MultiLocaleString to the MultiLocalizationPack as well as the CurrentPack in the LocalizationManager.
         /// </summary>

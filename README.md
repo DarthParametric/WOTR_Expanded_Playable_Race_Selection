@@ -1,3 +1,4 @@
+# About
 A mod for Owlcat's Pathfinder: Wrath of the Righteous.
 
 Expands the selection of playable races.
@@ -12,7 +13,7 @@ Expands the selection of playable races.
 - TBA
 
 # Thanks & Acknowledgements
-- Heavily cribbed from the code for BubbleRaces by factubsio
+- Heavily cribbed from the code for BubbleRaces by factubsio.
 - Relies on various setup, utility and helper scripts from TabletopTweaks by Vek17, some originally by way of EldritchArcana by elmindra.
 - microsoftenator2022 - Provided lots of help with troubleshooting my terrible code and various Unity issues.
 - Everyone in the `#mod-dev-technical` channel of the Owlcat Discord server for various modding-related discussions and suggestions, help troubleshooting issues, and answering general questions.

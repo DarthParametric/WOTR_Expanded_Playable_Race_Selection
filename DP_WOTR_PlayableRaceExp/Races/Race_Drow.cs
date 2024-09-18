@@ -88,9 +88,9 @@ namespace DP_WOTR_PlayableRaceExp.Races
 					for (var i = 0; i < skin.m_FemaleArray.Length; i++)
 					{
 						var id = skin.m_FemaleArray[i].AssetId;
-
-					Main.RaceExpContext.Logger.LogDebug($"Female AssetID: {id}, {EE_Names_IDs.Get_EE_Name(id)}");
-
+#if DEBUG
+						Main.RaceExpContext.Logger.LogDebug($"Female AssetID: {id}, {EE_Names_IDs.Get_EE_Name(id)}");
+#endif
 					}
 				});
 
@@ -120,6 +120,7 @@ namespace DP_WOTR_PlayableRaceExp.Races
 				Main.RaceExpContext.Logger.LogDebug("Adding racial stat bonuses:");
 
 				// Populate the base race blueprint "Components" array. This allows for defining custom racial stat bonuses/penalties.
+				// Not strictly necessary in this instance as the new values are identical to the original Elf values.
 				// +2 Dex.
 				race.AddComponent<AddStatBonus>(stat => {
 					stat.Descriptor = ModifierDescriptor.Racial;
@@ -172,7 +173,7 @@ namespace DP_WOTR_PlayableRaceExp.Races
 				EquipmentEntityLink[] FemHeadArray = [
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_head01_f_de")},
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_head02_f_el")},
-					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_head03_f_el")},
+					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_head02ember_f_el")},
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_head04_f_el")},
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_head05_f_el")}
 				];
@@ -191,7 +192,7 @@ namespace DP_WOTR_PlayableRaceExp.Races
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_hair03longbraids_m_el")},
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_hair04longstraight_m_el")},
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_hair06mediumbun_m_el")},
-					// Bald.
+					// Bald. EE_EMPTY_HairStyleColors.
 					new EquipmentEntityLink {AssetId = "b85db19d7adf6aa48b5dd2bb7bfe1502"}
 				];
 
@@ -205,7 +206,7 @@ namespace DP_WOTR_PlayableRaceExp.Races
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_hair07long_f_el")},
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_hair08sidekare_f_el")},
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_hairlucy_f_el")},
-					// Bald.
+					// Bald. EE_EMPTY_HairStyleColors.
 					new EquipmentEntityLink {AssetId = "b85db19d7adf6aa48b5dd2bb7bfe1502"}
 				];
 
