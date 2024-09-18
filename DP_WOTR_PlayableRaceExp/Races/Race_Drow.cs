@@ -172,8 +172,8 @@ namespace DP_WOTR_PlayableRaceExp.Races
 
 				EquipmentEntityLink[] FemHeadArray = [
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_head01_f_de")},
-					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_head02_f_el")},
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_head02ember_f_el")},
+					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_head03_f_el")},
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_head04_f_el")},
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_head05_f_el")}
 				];
