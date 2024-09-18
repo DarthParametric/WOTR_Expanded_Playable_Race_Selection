@@ -53,7 +53,7 @@ internal static class Main {
 		{
 			if (CreateAssetLinks.AssetsInBundles.TryGetValue(guid, out var bundle))
 			{
-				RaceExpContext.Logger.LogDebug($"Re-directing asset with guid: {guid} => bundle: {bundle}");
+				RaceExpContext.Logger.LogDebug($"Redirecting asset with GUID: {guid} to AssetBundle: {bundle}");
 				__result = bundle;
 				return false;
 			}
@@ -82,7 +82,7 @@ internal static class Main {
 		{
 			if (LoadActions.TryGetValue(name, out var action))
 			{
-				RaceExpContext.Logger.Log($"Patching asset on load: {name}");
+				RaceExpContext.Logger.LogDebug($"Patching asset on load: {name}");
 				action(__result);
 			}
 		}
@@ -101,7 +101,7 @@ internal static class Main {
 			{
 				if (Initialized)
 				{
-					RaceExpContext.Logger.Log("Already initialized blueprints cache.");
+					RaceExpContext.Logger.LogDebug("Already initialised blueprints cache.");
 					return;
 				}
 

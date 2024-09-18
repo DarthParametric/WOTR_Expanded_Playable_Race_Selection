@@ -72,26 +72,25 @@ namespace DP_WOTR_PlayableRaceExp.Races
 					originalBodyM = skin.m_MaleArray[0];
 					originalBodyF = skin.m_FemaleArray[0];
 
-					Main.RaceExpContext.Logger.LogDebug("Adding body EEs to VisualPresets:");
-
 					skin.m_MaleArray = Helpers.Arr(new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_body01_m_de")});
 					skin.m_FemaleArray = Helpers.Arr(new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_body01_f_de")});
-
+#if DEBUG
+					Main.RaceExpContext.Logger.LogDebug("Adding body EEs to VisualPresets:");
+					
 					for (var i = 0; i < skin.m_MaleArray.Length; i++)
 					{
 						var id = skin.m_MaleArray[i].AssetId;
-#if DEBUG
+
 						Main.RaceExpContext.Logger.LogDebug($"Male AssetID: {id}, {EE_Names_IDs.Get_EE_Name(id)}");
-#endif
 					}
 
 					for (var i = 0; i < skin.m_FemaleArray.Length; i++)
 					{
 						var id = skin.m_FemaleArray[i].AssetId;
-#if DEBUG
+
 						Main.RaceExpContext.Logger.LogDebug($"Female AssetID: {id}, {EE_Names_IDs.Get_EE_Name(id)}");
-#endif
 					}
+#endif
 				});
 
 				// Create a set of new unique VisualPreset blueprints based on the donor race originals.
@@ -177,7 +176,21 @@ namespace DP_WOTR_PlayableRaceExp.Races
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_head04_f_el")},
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_head05_f_el")}
 				];
-				
+#if DEBUG
+					for (var i = 0; i < MaleHeadArray.Length; i++)
+					{
+						var id = MaleHeadArray[i].AssetId;
+
+						Main.RaceExpContext.Logger.LogDebug($"Added male head EE: {EE_Names_IDs.Get_EE_Name(id)}");
+					}
+
+					for (var i = 0; i < FemHeadArray.Length; i++)
+					{
+						var id = FemHeadArray[i].AssetId;
+
+						Main.RaceExpContext.Logger.LogDebug($"Added female head EE: {EE_Names_IDs.Get_EE_Name(id)}");
+					}
+#endif
 				race.MaleOptions.m_Heads = Helpers.Arr(MaleHeadArray);
 				race.MaleOptions.m_HeadsCache = null;
 				race.FemaleOptions.m_Heads = Helpers.Arr(FemHeadArray);
@@ -209,16 +222,74 @@ namespace DP_WOTR_PlayableRaceExp.Races
 					// Bald. EE_EMPTY_HairStyleColors.
 					new EquipmentEntityLink {AssetId = "b85db19d7adf6aa48b5dd2bb7bfe1502"}
 				];
+#if DEBUG
+					for (var i = 0; i < MaleHairArray.Length; i++)
+					{
+						var id = MaleHairArray[i].AssetId;
 
+						if (id == "b85db19d7adf6aa48b5dd2bb7bfe1502")
+						{
+							Main.RaceExpContext.Logger.LogDebug($"Added male hair EE: ee_empty_hairstylecolors (bald)");
+						}
+						else
+						{
+							Main.RaceExpContext.Logger.LogDebug($"Added male hair EE: {EE_Names_IDs.Get_EE_Name(id)}");
+						}
+					}
 
+					for (var i = 0; i < FemHairArray.Length; i++)
+					{
+						var id = FemHairArray[i].AssetId;
+
+						if (id == "b85db19d7adf6aa48b5dd2bb7bfe1502")
+						{
+							Main.RaceExpContext.Logger.LogDebug($"Added female hair EE: ee_empty_hairstylecolors (bald)");
+						}
+						else
+						{
+							Main.RaceExpContext.Logger.LogDebug($"Added female hair EE: {EE_Names_IDs.Get_EE_Name(id)}");
+						}
+					}
+#endif
 				race.MaleOptions.m_Hair = Helpers.Arr(MaleHairArray);
 				race.MaleOptions.m_HairCache = null;
 				race.FemaleOptions.m_Hair = Helpers.Arr(FemHairArray);
 				race.FemaleOptions.m_HairCache = null;
 
-				race.MaleOptions.m_Eyebrows = Helpers.Arr(new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_brows01_m_de")});
+				// Define new eyebrow arrays.
+				EquipmentEntityLink[] MaleBrowArray = [
+					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_brows01_m_de")},
+					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_brows02_m_el")},
+					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_brows03_m_el")},
+					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_brows04_m_el")},
+					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_brows05_m_el")}
+				];
+
+				EquipmentEntityLink[] FemBrowArray = [
+					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_brows01_f_de")},
+					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_brows02ember_f_el")},
+					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_brows03_f_el")},
+					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_brows04_f_el")},
+					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_brows05_f_el")}
+				];
+#if DEBUG
+					for (var i = 0; i < MaleBrowArray.Length; i++)
+					{
+						var id = MaleBrowArray[i].AssetId;
+
+						Main.RaceExpContext.Logger.LogDebug($"Added male eyebrow EE: {EE_Names_IDs.Get_EE_Name(id)}");
+					}
+
+					for (var i = 0; i < FemBrowArray.Length; i++)
+					{
+						var id = FemBrowArray[i].AssetId;
+
+						Main.RaceExpContext.Logger.LogDebug($"Added female eyebrow EE: {EE_Names_IDs.Get_EE_Name(id)}");
+					}
+#endif
+				race.MaleOptions.m_Eyebrows = Helpers.Arr(MaleBrowArray);
 				race.MaleOptions.m_EyebrowsCache = null;
-				race.FemaleOptions.m_Eyebrows = Helpers.Arr(new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_brows01_f_de")});
+				race.FemaleOptions.m_Eyebrows = Helpers.Arr(FemBrowArray);
 				race.FemaleOptions.m_EyebrowsCache = null;
 			});
 
