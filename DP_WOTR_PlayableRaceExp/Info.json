@@ -1,12 +1,14 @@
 ﻿{
-  "Id": "DP_WOTR_PlayableRaceExp",
-  "DisplayName": "Expanded Playable Race Selection",
-  "Author": "DarthParametric",
-  "Version": "1.0.0",
-  "ManagerVersion": "0.29.0",
-  "Requirements": [],
-  "AssemblyName": "DP_WOTR_PlayableRaceExp.dll",
-  "EntryMethod": "DP_WOTR_PlayableRaceExp.Main.Load",
-  "HomePage": "https://github.com/DarthParametric/WOTR_Expanded_Playable_Race_Selection",
-  "Repository": "https://github.com/DarthParametric/WOTR_Expanded_Playable_Race_Selection"
+	"Id": "DP_WOTR_PlayableRaceExp",
+	"DisplayName": "Expanded Playable Race Selection",
+	"Author": "DarthParametric",
+	"Version": "1.0.0",
+    "GameVersion": "2.4.0",
+	"ManagerVersion": "0.29.0",
+	"Requirements": [],
+    "LoadAfter": [],
+	"AssemblyName": "DP_WOTR_PlayableRaceExp.dll",
+	"EntryMethod": "DP_WOTR_PlayableRaceExp.Main.Load",
+	"HomePage": "https://github.com/DarthParametric/WOTR_Expanded_Playable_Race_Selection",
+	"Repository": "https://raw.githubusercontent.com/DarthParametric/WOTR_Expanded_Playable_Race_Selection/master/WOTR_Expanded_Playable_Race_Selection/Repository.json"
 }

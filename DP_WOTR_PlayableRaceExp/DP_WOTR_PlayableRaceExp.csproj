@@ -46,9 +46,7 @@
 	</ItemGroup>
 	<Target Name="EmptyModDir" BeforeTargets="Build">
 		<ItemGroup>
-			<ModDir
-				Include="$(WrathInstallDir)\Mods\$(ModFolderDir)\*.*"
-			/>
+			<ModDir Include="$(WrathInstallDir)\Mods\$(ModFolderDir)\*.*" />
 		</ItemGroup>
 		
 		<Delete Files="@(ModDir)" />
@@ -57,26 +55,17 @@
 		<ItemGroup>
 			<Files Include="$(TargetDir)\**\*.*" />
 		</ItemGroup>
-		<Copy
-			SourceFiles="@(Files)"
-			DestinationFiles="@(Files->'$(WrathInstallDir)\Mods\$(ModFolderDir)\%(RecursiveDir)%(Filename)%(Extension)')"
-			OverwriteReadOnlyFiles="true"
-			SkipUnchangedFiles="false"
-		/>
+		<Copy SourceFiles="@(Files)" DestinationFiles="@(Files->'$(WrathInstallDir)\Mods\$(ModFolderDir)\%(RecursiveDir)%(Filename)%(Extension)')" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="false" />
 		
 		<MakeDir Directories="$(MSBuildProjectDirectory)\$(OutputPath)\$(ModFolderDir)" />
-		<Move SourceFiles="@(Files)" DestinationFolder="$(MSBuildProjectDirectory)\$(OutputPath)\$(ModFolderDir)"/>
+		<Move SourceFiles="@(Files)" DestinationFolder="$(MSBuildProjectDirectory)\$(OutputPath)\$(ModFolderDir)" />
 		
-		<ZipDirectory
-			SourceDirectory="$(MSBuildProjectDirectory)\$(OutputPath)"
-			DestinationFile="$(SolutionDir)_Export\$(ModDescription)_v$(Version).zip"
-			Overwrite="true"
-		/>
+		<ZipDirectory SourceDirectory="$(MSBuildProjectDirectory)\$(OutputPath)" DestinationFile="$(SolutionDir)_Export\$(ModDescription)_v$(Version).zip" Overwrite="true" />
 	</Target>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
 		<PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" IncludeAssets="build; contentfiles" Version="0.4.2" PrivateAssets="all" />
-		<PackageReference Include="MicroUtils.HarmonyAnalyzers" IncludeAssets="runtime; build; native; contentfiles; analyzers" Version="*-*" PrivateAssets="all" />
+		<PackageReference Include="MicroUtils.HarmonyAnalyzers" IncludeAssets="runtime; build; native; contentfiles; analyzers" Version="1.3.0-beta1727165144" PrivateAssets="all" />
 	</ItemGroup>
 	<Target Name="GenerateCustomPropsFile" Condition="$(WrathInstallDir) == ''">
 		<Exec Command="findstr /C:&quot;Mono path[0]&quot; &quot;$(WrathData)\Player.log&quot;" IgnoreExitCode="true" ConsoleToMSBuild="true">
@@ -105,6 +94,6 @@
 		<Delete Files="@(PropsFile);@(ExportDir)" />
 	</Target>
 	<Target Name="PostClean" AfterTargets="Clean">
-		<RemoveDir Directories="$(OutDir)"/>
+		<RemoveDir Directories="$(OutDir)" />
 	</Target>
 </Project>
