@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 844bc7b06e9bead4daae5ff51f09dfc0, type: 3}
+  m_Name: CL_Skin_DPDrow
+  m_EditorClassIdentifier: 
+  Ramps:
+  - {fileID: 2800000, guid: 6cc7dc7c64aa2c44b9566cd4276d3906, type: 3}
+  - {fileID: 2800000, guid: 8e68073559cb59647b08e6760d12653d, type: 3}
+  - {fileID: 2800000, guid: 61beb6c988cf4024793c6a4d54423bbd, type: 3}
+  - {fileID: 2800000, guid: 8c341f87db914324194371030db9ef3d, type: 3}
+  - {fileID: 2800000, guid: b7e595e5868f38c4384d2d6a47cedb2c, type: 3}
+  RampDlcLocks: []
+  SpecialRamps: []

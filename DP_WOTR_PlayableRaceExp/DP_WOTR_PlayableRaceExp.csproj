@@ -18,6 +18,9 @@
 	  <Optimize>False</Optimize>
 	</PropertyGroup>
 	<PropertyGroup>
+		<DefaultItemExcludes>$(DefaultItemExcludes);Bundle\**</DefaultItemExcludes>
+	</PropertyGroup>
+	<PropertyGroup>
 		<ModDescription>$(Description.Replace(' ', '_'))</ModDescription>
 	</PropertyGroup>
 	<PropertyGroup>
@@ -65,7 +68,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
 		<PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" IncludeAssets="build; contentfiles" Version="0.4.2" PrivateAssets="all" />
-		<PackageReference Include="MicroUtils.HarmonyAnalyzers" IncludeAssets="runtime; build; native; contentfiles; analyzers" Version="1.3.0-beta1727165144" PrivateAssets="all" />
+		<PackageReference Include="MicroUtils.HarmonyAnalyzers" IncludeAssets="runtime; build; native; contentfiles; analyzers" Version="1.3.1" PrivateAssets="all" />
 	</ItemGroup>
 	<Target Name="GenerateCustomPropsFile" Condition="$(WrathInstallDir) == ''">
 		<Exec Command="findstr /C:&quot;Mono path[0]&quot; &quot;$(WrathData)\Player.log&quot;" IgnoreExitCode="true" ConsoleToMSBuild="true">
