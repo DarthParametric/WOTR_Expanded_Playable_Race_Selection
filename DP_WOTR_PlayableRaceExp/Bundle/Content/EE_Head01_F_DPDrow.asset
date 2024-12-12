@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcde4aec24b2ccb4987b7dcc91a532d8, type: 3}
-  m_Name: EE_Head01_F_DE
+  m_Name: EE_Head01_F_DPDrow
   m_EditorClassIdentifier: 
   IsExportEnabled: 0
   CantBeHiddenByDollRoom: 0

@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace DPPlayableRaceExp
 {
-	[CreateAssetMenu(menuName = "ScriptableObjects/Character Colors Profile/New CCP")]
-	public class DPPlayableRaceExpColourProfile : CharacterColorsProfile
+	[CreateAssetMenu(menuName = "ScriptableObjects/Colour Profile/New Char CCP")]
+	public class DPPlayableRaceExpCharColourProfile : CharacterColorsProfile
 	{
 
 	}

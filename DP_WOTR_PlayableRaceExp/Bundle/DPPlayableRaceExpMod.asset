@@ -20,4 +20,6 @@ MonoBehaviour:
     Author: DarthParametric
     Repository: https://github.com/DarthParametric/WOTR_Expanded_Playable_Race_Selection
     HomePage: 
-    Dependencies: []
+    Dependencies:
+    - Name: WrathPatches
+      Version: 2.5.0

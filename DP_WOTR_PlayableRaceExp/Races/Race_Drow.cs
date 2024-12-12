@@ -213,12 +213,12 @@ namespace DP_WOTR_PlayableRaceExp.Races
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_hair01longember_f_de")},
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_hair02frenchbraid_f_de")},
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_hair04ponytaillush_f_el")},
-					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_hair00slick_f_el")},
+					//new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_hair00slick_f_el")},
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_hair03pompadour_f_el")},
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_hair06mediumanevia_f_el")},
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_hair07long_f_el")},
 					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_hair08sidekare_f_el")},
-					new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_hairlucy_f_el")},
+					//new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_hairlucy_f_el")},
 					// Bald. EE_EMPTY_HairStyleColors.
 					new EquipmentEntityLink {AssetId = "b85db19d7adf6aa48b5dd2bb7bfe1502"}
 				];

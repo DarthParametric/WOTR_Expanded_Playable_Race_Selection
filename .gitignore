@@ -407,6 +407,6 @@ _Reference/
 Unity/
 
 # Exclude binary assets
-*.tga
-*.png
-*.fbx
+DP_WOTR_PlayableRaceExp/Bundle/**/*.tga
+DP_WOTR_PlayableRaceExp/Bundle/**/*.png
+DP_WOTR_PlayableRaceExp/Bundle/**/*.fbx
