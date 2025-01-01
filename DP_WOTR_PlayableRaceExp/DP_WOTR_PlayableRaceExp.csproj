@@ -49,7 +49,7 @@
 	</ItemGroup>
 	<Target Name="EmptyModDir" BeforeTargets="Build">
 		<ItemGroup>
-			<ModDir Include="$(WrathInstallDir)\Mods\$(ModFolderDir)\*.*" />
+			<ModDir Include="$(WrathInstallDir)\Mods\$(ModFolderDir)\*.*" Exclude="$(WrathInstallDir)\Mods\$(ModFolderDir)\*_content" />
 		</ItemGroup>
 		
 		<Delete Files="@(ModDir)" />

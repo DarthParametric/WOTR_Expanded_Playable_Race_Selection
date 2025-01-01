@@ -22,4 +22,4 @@ MonoBehaviour:
     HomePage: 
     Dependencies:
     - Name: WrathPatches
-      Version: 2.5.0
+      Version: 1.5.0

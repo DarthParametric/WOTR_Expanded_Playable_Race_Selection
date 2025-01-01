@@ -12,8 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80fe07f61edc4914ac44891e22e1fdf7, type: 3}
   m_Name: DPPlayableRaceExpBlueprintPatches
   m_EditorClassIdentifier: 
-  Entries:
-  - Guid: 
-    Filename: 
-  - Guid: 
-    Filename: 
+  Entries: []

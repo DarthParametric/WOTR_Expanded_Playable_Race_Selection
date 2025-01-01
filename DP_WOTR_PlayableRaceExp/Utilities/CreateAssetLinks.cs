@@ -12,7 +12,7 @@ namespace DP_WOTR_PlayableRaceExp.Utilities
 			}
 			catch (Exception e)
 			{
-				Main.RaceExpContext.Logger.LogException(e, "Error loading asset links!");
+				Main.RaceExpContext.Logger.LogException(e, "CreateAssetLinks.LoadAllSettings: Error loading asset links!");
 			}
 			
 		}
@@ -27,14 +27,11 @@ namespace DP_WOTR_PlayableRaceExp.Utilities
 				var guid = item.Key;
 				var bundle = item.Value;
 
-				if (!Bundles.Contains(bundle)) { Main.RaceExpContext.Logger.LogDebug($"Added bundle {bundle} to list."); }
-				if (!AssetsInBundles.ContainsKey(guid)) { Main.RaceExpContext.Logger.LogDebug($"Linked asset {guid} to bundle {bundle}."); }
-
 				Bundles.Add(bundle);
 				AssetsInBundles[guid] = bundle;
 			}
 
-			Main.RaceExpContext.Logger.LogDebug($"Found {AssetsInBundles.Count} asset links in {Bundles.Count} bundles");
+			Main.RaceExpContext.Logger.LogDebug($"CreateAssetLinks.LoadAssetLinks: Found {AssetsInBundles.Count} asset links in {Bundles.Count} bundles");
 		}
 	}
 }

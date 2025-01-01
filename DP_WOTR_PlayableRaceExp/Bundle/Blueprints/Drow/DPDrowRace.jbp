@@ -1,5 +1,5 @@
 {
-  "AssetId": "",
+  "AssetId": "8eb2d6d979b2fcd45bddae46197e7d00",
   "Data": {
     "$type": "9a3d49fbb9d4c174d8ec1090679fe3e3, BlueprintRace",
     "PrototypeLink": "",
@@ -63,9 +63,27 @@
     ],
     "Comment": "",
     "m_AllowNonContextActions": false,
-    "m_DisplayName": null,
-    "m_Description": null,
-    "m_DescriptionShort": null,
+    "m_DisplayName": {
+      "m_Key": "DPDrow_DisplayName",
+      "m_OwnerString": "",
+      "m_OwnerPropertyPath": "",
+      "m_JsonPath": "",
+      "Shared": null
+    },
+    "m_Description": {
+      "m_Key": "DPDrow_Description",
+      "m_OwnerString": "",
+      "m_OwnerPropertyPath": "",
+      "m_JsonPath": "",
+      "Shared": null
+    },
+    "m_DescriptionShort": {
+      "m_Key": "",
+      "m_OwnerString": "",
+      "m_OwnerPropertyPath": "",
+      "m_JsonPath": "",
+      "Shared": null
+    },
     "m_Icon": null,
     "HideInUI": false,
     "HideInCharacterSheetAndLevelUp": false,
@@ -73,10 +91,10 @@
     "Groups": [],
     "Ranks": 1,
     "ReapplyOnLevelUp": false,
-    "IsClassFeature": false,
-    "IsPrerequisiteFor": null,
-    "SoundKey": "",
-    "RaceId": "Human",
+    "IsClassFeature": true,
+    "IsPrerequisiteFor": [],
+    "SoundKey": "Elf",
+    "RaceId": "DPDrow",
     "SelectableRaceStat": false,
     "Size": "Medium",
     "m_Features": [
@@ -86,20 +104,138 @@
       "!bp_03fd1e043fc678a4baf73fe67c3780ce",
       "!bp_5482f879dcfd40f9a3168fdb48bc938c"
     ],
-    "m_Presets": [],
+    "m_Presets": [
+      "!bp_65bf3b802b9e5d74bb37f4d9eba19124",
+      "!bp_1fcf816b023c84d4986ef03e8ee3417b",
+      "!bp_e93bf8891f83edd489713c3aa90c03e5"
+    ],
     "LinkHairAndSkinColorsCondition": null,
     "MaleOptions": {
-      "m_Heads": [],
-      "m_Eyebrows": [],
-      "m_Hair": [],
+      "m_Heads": [
+        {
+          "AssetId": "7deb0c70b8dbd1c468c0bc55921d8700"
+        },
+        {
+          "AssetId": "ec3b4159d4da17d448ba0c468f203275"
+        },
+        {
+          "AssetId": "7c2428edc91f8754789f234dce4b3386"
+        },
+        {
+          "AssetId": "46c31a0c54ad7c4429d9ee4ab88b8b0b"
+        },
+        {
+          "AssetId": "c175d302fe4192740ad75f9a6f93b901"
+        }
+      ],
+      "m_Eyebrows": [
+        {
+          "AssetId": "ffaf68a122c45bf4a87bc0ce4d8c577a"
+        },
+        {
+          "AssetId": "c6f11c87289478b4e935be3665f528e8"
+        },
+        {
+          "AssetId": "72b8ddab76840c84b9cfdab927490ebc"
+        },
+        {
+          "AssetId": "242de5da2de439b4e96fbeecca872d3d"
+        },
+        {
+          "AssetId": "fcb0f931d48bd1a49a522681aed489ae"
+        }
+      ],
+      "m_Hair": [
+        {
+          "AssetId": "9ee4d597fcfe7b842817952ba89d64d3"
+        },
+        {
+          "AssetId": "c5ec3f126c717674ba342113de5a250f"
+        },
+        {
+          "AssetId": "4eefcdabd9f180b42b4dca880f4802ce"
+        },
+        {
+          "AssetId": "6c9440b30599c4f4ea850ca0a06e3224"
+        },
+        {
+          "AssetId": "0a9587a515027274191b794bae070112"
+        },
+        {
+          "AssetId": "6da3960d8eef2504b80466831342357d"
+        },
+        {
+          "AssetId": "2e8f56cc1c37c4745ba5ba1d80b79b8f"
+        },
+        {
+          "AssetId": "b85db19d7adf6aa48b5dd2bb7bfe1502"
+        }
+      ],
       "Beards": [],
       "Horns": [],
       "TailSkinColors": []
     },
     "FemaleOptions": {
-      "m_Heads": [],
-      "m_Eyebrows": [],
-      "m_Hair": [],
+      "m_Heads": [
+        {
+          "AssetId": "2fbacbb9fb0b90d4da1dfb25f53cec5b"
+        },
+        {
+          "AssetId": "3b23e15c3ee3dcf448087e8630164640"
+        },
+        {
+          "AssetId": "3baf27c3419a0f4438678a4da6cd8b85"
+        },
+        {
+          "AssetId": "a18d688a4fd6a4845b5b37cc9b51335b"
+        },
+        {
+          "AssetId": "2f6d6016e00b5a441b9e4dbe87c63e77"
+        }
+      ],
+      "m_Eyebrows": [
+        {
+          "AssetId": "d0fbd2d1a446fff4d86119aebe3b58ed"
+        },
+        {
+          "AssetId": "7c005f50c265da2479841b7fd565ee72"
+        },
+        {
+          "AssetId": "f4b4d3908da823d48862d52e5cbaba54"
+        },
+        {
+          "AssetId": "4ba0a84249037c846a9ecd405ffabf68"
+        },
+        {
+          "AssetId": "bb9af6cedb218734b9b8b43a7549c995"
+        }
+      ],
+      "m_Hair": [
+        {
+          "AssetId": "168e0f1b9d4429a41a9a7c8b7eb2001a"
+        },
+        {
+          "AssetId": "7747b35f82d95b845923b03ed171d256"
+        },
+        {
+          "AssetId": "44b78d2f7c31c7242aae618e65775f67"
+        },
+        {
+          "AssetId": "056922977668ffc47941508d52d89970"
+        },
+        {
+          "AssetId": "2dce2f4625d99d94f877e14216455015"
+        },
+        {
+          "AssetId": "d935100021962d647b161e7b152cbeff"
+        },
+        {
+          "AssetId": "6fe5176b7a092b0458116185757f4825"
+        },
+        {
+          "AssetId": "b85db19d7adf6aa48b5dd2bb7bfe1502"
+        }
+      ],
       "Beards": [],
       "Horns": [],
       "TailSkinColors": []

@@ -1,13 +1,21 @@
 {
-  "AssetId": "",
+  "AssetId": "ab81e4c99c0ded442aa2b773c6f555f0",
   "Data": {
     "$type": "856d2f6e26e25c04fad05a1429d1b579, KingmakerEquipmentEntity",
-    "PrototypeLink": null,
+    "PrototypeLink": "",
     "m_Overrides": [],
     "Components": [],
     "Comment": "",
-    "m_MaleArray": null,
-    "m_FemaleArray": null,
+    "m_MaleArray": [
+      {
+        "AssetId": "eeda8e7eac9ae494da2111f7bb968eab"
+      }
+    ],
+    "m_FemaleArray": [
+      {
+        "AssetId": "87e529e61ef33f543848e01101fbd15c"
+      }
+    ],
     "m_RaceDependent": false,
     "m_RaceDependentArrays": [
       {

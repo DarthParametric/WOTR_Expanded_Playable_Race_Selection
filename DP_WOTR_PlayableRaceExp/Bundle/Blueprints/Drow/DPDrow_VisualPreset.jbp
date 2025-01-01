@@ -1,14 +1,20 @@
 {
-  "AssetId": "",
+  "AssetId": "65bf3b802b9e5d74bb37f4d9eba19124",
   "Data": {
     "$type": "11a828b07c9145c484d200ea9581541a, BlueprintRaceVisualPreset",
     "PrototypeLink": null,
     "m_Overrides": [],
-    "Components": null,
-    "Comment": null,
-    "RaceId": "Human",
-    "MaleSkeleton": null,
-    "FemaleSkeleton": null,
-    "m_Skin": null
+    "Components": [],
+    "Comment": "",
+    "RaceId": "DPDrow",
+    "MaleSkeleton": {
+      "guid": "3dcf7a246943e254989e492700cf9531",
+      "fileid": 11400000
+    },
+    "FemaleSkeleton": {
+      "guid": "cd2f98f8928837540a723498c7706793",
+      "fileid": 11400000
+    },
+    "m_Skin": "!bp_ab81e4c99c0ded442aa2b773c6f555f0"
   }
 }

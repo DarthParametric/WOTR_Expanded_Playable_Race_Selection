@@ -398,7 +398,7 @@ FodyWeavers.xsd
 *.sln.iml
 
 /GamePath.props
-
+/Generate_AssetIDs_Map.ps1
 /Update_Mod_Folder.ps1
 
 _Assets/

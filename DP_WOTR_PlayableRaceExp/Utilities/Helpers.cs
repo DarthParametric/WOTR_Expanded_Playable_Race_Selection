@@ -18,6 +18,8 @@ using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
+using System.Collections;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace DP_WOTR_PlayableRaceExp.Utilities {
