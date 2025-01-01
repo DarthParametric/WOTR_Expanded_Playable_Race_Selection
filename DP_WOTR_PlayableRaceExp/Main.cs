@@ -47,14 +47,8 @@ internal static class Main {
 				__result = AssetBundle.LoadFromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Bundles", $"{bundleName}"));
 
 				// Since imported shaders are broken, swap the shaders in the bundle with a donor vanilla one.
-				EquipmentEntityLink DonorHead = new EquipmentEntityLink { AssetId = EE_Names_IDs.Get_EE_ID("ee_body01_m_de") };
-				RaceExpContext.Logger.LogDebug($"Main.TryLoadBundle: Harvesting vanilla donor head ee_body01_m_de, asset ID {DonorHead.AssetId}");
-
-				if (materialsByName == null)
-				{
-					materialsByName = new();
-					materialsByName["Character_Diffuse_Cutout"] = DonorHead.Load(false).BodyParts[0].Material;
-				}
+				EquipmentEntityLink DonorHead = new EquipmentEntityLink { AssetId = EE_Names_IDs.Get_EE_ID("ee_head01_m_hm") };
+				RaceExpContext.Logger.LogDebug($"Main.TryLoadBundle: Harvesting vanilla donor head ee_head01_m_hm, asset ID {DonorHead.AssetId}");
 
 				if (shadersByName == null)
 				{
@@ -84,12 +78,7 @@ internal static class Main {
 									RaceExpContext.Logger.LogDebug("Main.TryLoadBundle: Null material, probably stale asset, skipping");
 									continue;
 								}
-
-								//RaceExpContext.Logger.LogDebug($"Main.TryLoadBundle: Attempting to replace bundle {material.name} with donor's...");
-								//materialsByName.TryGetValue(material.name, out var replacementMat);
-								//material = replacementMat;
-								//RaceExpContext.Logger.LogDebug("Main.TryLoadBundle: If we got this far, success?");
-						
+								
  								if (material.shader != null && shadersByName.TryGetValue(material.shader.name, out var replacement))
 								{
 									RaceExpContext.Logger.LogDebug("Main.TryLoadBundle: Attempting to replace shader with donor's...");

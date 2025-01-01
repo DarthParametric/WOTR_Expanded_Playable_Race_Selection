@@ -13,9 +13,9 @@ Alternatively, you can use ModFinder to automate the installation process.
 - TBA
 
 # Thanks & Acknowledgements:
-- Heavily cribbed from the code for BubbleRaces by factubsio (AKA Bubbles).
-- Relies on various setup, utility and helper scripts from TabletopTweaks by Vek17, some originally by way of EldritchArcana by elmindra.
+- Heavily cribbed from the code for [BubbleRaces](https://github.com/xADDBx/FileSharing/blob/8e043545d0631a8a30369024c07c31d0ac80f08d/BubbleRaces.zip) by factubsio (AKA Bubbles).
+- Relies on various setup, utility and helper scripts from [TabletopTweaks](https://github.com/Vek17/TabletopTweaks-Core) by Vek17, some originally by way of [EldritchArcana](https://github.com/elmindra/pathfinder-mods) by elmindra.
 - microsoftenator2022 - Provided lots of help with troubleshooting my terrible code and various Unity issues.
-- Kurufinve - Coached me through the teething issues of my Rogue Trader helmet mod, allowing me to learn the ins and outs of creating the required assets and the general Unity template workflow.
+- Kurufinve - Coached me through the teething issues of my Rogue Trader helmet mod, allowing me to learn the ins and outs of creating the required assets and the general Unity template workflow. Also provided a custom version of Owlcat's Unity template for Wrath, allowing for vanilla type inheritance.
 - Everyone in the `#mod-dev-technical` channel of the Owlcat Discord server for various modding-related discussions and suggestions, help troubleshooting issues, and answering general questions.
 
