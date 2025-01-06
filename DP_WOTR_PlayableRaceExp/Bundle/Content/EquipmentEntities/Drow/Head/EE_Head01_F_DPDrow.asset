@@ -48,10 +48,10 @@ MonoBehaviour:
       type: 3}
     Material: {fileID: 2100000, guid: 45bb4c9a6e710c24ea88a9f4c0dece4a, type: 2}
     Textures:
-    - ActiveTexture: {fileID: 2800000, guid: b20217644a119514c8e7d33622a6cbe1, type: 3}
-      DiffuseTexture: {fileID: 2800000, guid: b20217644a119514c8e7d33622a6cbe1, type: 3}
-      NormalTexture: {fileID: 2800000, guid: b944bf2c08f08a549ad4fe329e659b0e, type: 3}
-      MaskTexture: {fileID: 2800000, guid: 4e2a0e36750581d44b3f6c087de345c7, type: 3}
+    - ActiveTexture: {fileID: 2800000, guid: 644dbff1cd3136040b58c17ab900555e, type: 3}
+      DiffuseTexture: {fileID: 2800000, guid: 644dbff1cd3136040b58c17ab900555e, type: 3}
+      NormalTexture: {fileID: 2800000, guid: d9091d9aa03acf44b833e583dd115994, type: 3}
+      MaskTexture: {fileID: 2800000, guid: f4ce0cd0065aa0c49b553ff6fa882b34, type: 3}
       RampShadowTexture: {fileID: 0}
       DefaultMask1: {fileID: 0}
       DefaultMask2: {fileID: 0}
@@ -99,10 +99,10 @@ MonoBehaviour:
       type: 3}
     Material: {fileID: 2100000, guid: 45bb4c9a6e710c24ea88a9f4c0dece4a, type: 2}
     Textures:
-    - ActiveTexture: {fileID: 2800000, guid: b20217644a119514c8e7d33622a6cbe1, type: 3}
-      DiffuseTexture: {fileID: 2800000, guid: b20217644a119514c8e7d33622a6cbe1, type: 3}
-      NormalTexture: {fileID: 2800000, guid: b944bf2c08f08a549ad4fe329e659b0e, type: 3}
-      MaskTexture: {fileID: 2800000, guid: 4e2a0e36750581d44b3f6c087de345c7, type: 3}
+    - ActiveTexture: {fileID: 2800000, guid: 644dbff1cd3136040b58c17ab900555e, type: 3}
+      DiffuseTexture: {fileID: 2800000, guid: 644dbff1cd3136040b58c17ab900555e, type: 3}
+      NormalTexture: {fileID: 2800000, guid: d9091d9aa03acf44b833e583dd115994, type: 3}
+      MaskTexture: {fileID: 2800000, guid: f4ce0cd0065aa0c49b553ff6fa882b34, type: 3}
       RampShadowTexture: {fileID: 0}
       DefaultMask1: {fileID: 0}
       DefaultMask2: {fileID: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
         SecondaryRamp: {fileID: 0}
       Channel: 0
   - m_Type: 64
-    RendererPrefab: {fileID: 919132149155446097, guid: dd3942cef3c08ba449b0d394ebec6901,
+    RendererPrefab: {fileID: 919132149155446097, guid: 1aa024f7b882b664fb71d0ea9f805b2b,
       type: 3}
     Material: {fileID: 2100000, guid: 45bb4c9a6e710c24ea88a9f4c0dece4a, type: 2}
     Textures:
@@ -179,10 +179,10 @@ MonoBehaviour:
       type: 3}
     Material: {fileID: 2100000, guid: 45bb4c9a6e710c24ea88a9f4c0dece4a, type: 2}
     Textures:
-    - ActiveTexture: {fileID: 2800000, guid: b20217644a119514c8e7d33622a6cbe1, type: 3}
-      DiffuseTexture: {fileID: 2800000, guid: b20217644a119514c8e7d33622a6cbe1, type: 3}
-      NormalTexture: {fileID: 2800000, guid: b944bf2c08f08a549ad4fe329e659b0e, type: 3}
-      MaskTexture: {fileID: 2800000, guid: 4e2a0e36750581d44b3f6c087de345c7, type: 3}
+    - ActiveTexture: {fileID: 2800000, guid: 644dbff1cd3136040b58c17ab900555e, type: 3}
+      DiffuseTexture: {fileID: 2800000, guid: 644dbff1cd3136040b58c17ab900555e, type: 3}
+      NormalTexture: {fileID: 2800000, guid: d9091d9aa03acf44b833e583dd115994, type: 3}
+      MaskTexture: {fileID: 2800000, guid: f4ce0cd0065aa0c49b553ff6fa882b34, type: 3}
       RampShadowTexture: {fileID: 0}
       DefaultMask1: {fileID: 2800000, guid: 91684935c9a68344f90da2b327332367, type: 3}
       DefaultMask2: {fileID: 0}

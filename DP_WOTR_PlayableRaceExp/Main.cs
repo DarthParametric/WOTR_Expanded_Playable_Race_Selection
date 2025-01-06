@@ -144,8 +144,7 @@ internal static class Main {
 	public static class BlueprintsCaches_Patch
 	{
 		private static bool Initialized = false;
-
-		[HarmonyPriority(Priority.First)]
+		
 		[HarmonyPatch(nameof(BlueprintsCache.Init)), HarmonyPostfix]
 		public static void Init_Postfix()
 		{

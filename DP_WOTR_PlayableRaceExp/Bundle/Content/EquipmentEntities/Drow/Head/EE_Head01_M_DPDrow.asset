@@ -146,7 +146,7 @@ MonoBehaviour:
         SecondaryRamp: {fileID: 0}
       Channel: 0
   - m_Type: 64
-    RendererPrefab: {fileID: 919132149155446097, guid: 1644b893c2b5f4548ad10bfeb925ef04,
+    RendererPrefab: {fileID: 919132149155446097, guid: f372467b0f6e1aa4b99933c3367f2385,
       type: 3}
     Material: {fileID: 2100000, guid: 45bb4c9a6e710c24ea88a9f4c0dece4a, type: 2}
     Textures:
@@ -171,7 +171,7 @@ MonoBehaviour:
       Ramps:
         PrimaryMask: {fileID: 2800000, guid: 91684935c9a68344f90da2b327332367, type: 3}
         PrimaryRamp: {fileID: 0}
-        SecondaryMask: {fileID: 0}
+        SecondaryMask: {fileID: 2800000, guid: 91684935c9a68344f90da2b327332367, type: 3}
         SecondaryRamp: {fileID: 0}
       Channel: 0
   - m_Type: 1073741824

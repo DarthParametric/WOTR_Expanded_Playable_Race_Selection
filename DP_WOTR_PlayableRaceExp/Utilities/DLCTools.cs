@@ -21,8 +21,8 @@ namespace DP_WOTR_PlayableRaceExp.Utilities {
                 6 => Dlc6,
                 _ => null
             };
-            if(DLC == null) { return false; }
-            StoreManager.RefreshDLCs(new BlueprintDlc[] { DLC });
+			if (DLC == null) { return false; }
+			StoreManager.RefreshDLCs(new BlueprintDlc[] { DLC });
             return DLC.IsAvailable;
         }
     }

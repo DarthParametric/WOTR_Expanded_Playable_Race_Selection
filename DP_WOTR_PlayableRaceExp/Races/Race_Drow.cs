@@ -1,5 +1,4 @@
-﻿using DP_WOTR_PlayableRaceExp.Config;
-using DP_WOTR_PlayableRaceExp.Utilities;
+﻿using DP_WOTR_PlayableRaceExp.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.CharGen;
 using Kingmaker.Blueprints.Classes;
@@ -9,8 +8,7 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.ResourceLinks;
 using Kingmaker.UnitLogic.FactLogic;
-using Kingmaker.Visual.CharacterSystem;
-using UnityEngine;
+using static DP_WOTR_PlayableRaceExp.Main;
 
 namespace DP_WOTR_PlayableRaceExp.Races
 {
@@ -23,18 +21,18 @@ namespace DP_WOTR_PlayableRaceExp.Races
 
 		public static void Install()
 		{
-			Main.RaceExpContext.Logger.Log("Creating blueprints for added Drow race.");
+			RaceExpContext.Logger.Log("Creating blueprints for added Drow race.");
 
 			var OrigElf = RaceRefs.ElfRace;
 
-			Main.RaceExpContext.Logger.LogDebug($"Cloning original race blueprint {OrigElf.name}.");
+			RaceExpContext.Logger.LogDebug($"Cloning original race blueprint {OrigElf.name}.");
 
 			// Copy vanilla XYZRace blueprint and replace its values.
 			DPDrowRace = Helpers.CreateCopyAlt<BlueprintRace>(OrigElf, race => {
 				race.name = "DPDrow";
-				race.AssetGuid = Main.RaceExpContext.Blueprints.GetGUID(race.name);
-				race.m_DisplayName = Helpers.CreateString(Main.RaceExpContext, "DPDrow_DisplayName", "Drow");
-				race.m_Description = Helpers.CreateString(Main.RaceExpContext, "DPDrow_Description", "Cruel and cunning, drow are a dark reflection of the elven race. Also called dark elves, they dwell deep underground in elaborate cities shaped from the rock of cyclopean caverns. Drow seldom make themselves known to surface folk, preferring to remain legends while advancing their sinister agendas through proxies and agents. Drow have no love for anyone but themselves, and are adept at manipulating other creatures. While they are not born evil, malignancy is deep-rooted in their culture and society, and nonconformists rarely survive for long. Some stories tell that given the right circumstances, a particularly hateful elf might turn into a drow, though such a transformation would require a truly heinous individual.");
+				race.AssetGuid = RaceExpContext.Blueprints.GetGUID(race.name);
+				race.m_DisplayName = Helpers.CreateString(RaceExpContext, "DPDrow_DisplayName", "Drow");
+				race.m_Description = Helpers.CreateString(RaceExpContext, "DPDrow_Description", "Cruel and cunning, drow are a dark reflection of the elven race. Also called dark elves, they dwell deep underground in elaborate cities shaped from the rock of cyclopean caverns. Drow seldom make themselves known to surface folk, preferring to remain legends while advancing their sinister agendas through proxies and agents. Drow have no love for anyone but themselves, and are adept at manipulating other creatures. While they are not born evil, malignancy is deep-rooted in their culture and society, and nonconformists rarely survive for long. Some stories tell that given the right circumstances, a particularly hateful elf might turn into a drow, though such a transformation would require a truly heinous individual.");
 
 				// The "m_Features" array contains the set of base features inherent to a class like weapon proficiencies, immunities, etc.
 				// Most important are likely the heritage selections, which may need to be changed depending on how divergent from the vanilla
@@ -63,10 +61,10 @@ namespace DP_WOTR_PlayableRaceExp.Races
 				var skin = Helpers.CreateCopyAlt(race.m_Presets[0].Get().Skin, skin => {
 					skin.name = skin.name.Replace("Elf", "DPDrow");
 
-					Main.RaceExpContext.Logger.LogDebug($"Creating body KEE:");
+					RaceExpContext.Logger.LogDebug($"Creating body KEE:");
 
-					skin.AssetGuid = Main.RaceExpContext.Blueprints.GetGUID(skin.name);
-					BlueprintTools.AddBlueprint(Main.RaceExpContext, skin);
+					skin.AssetGuid = RaceExpContext.Blueprints.GetGUID(skin.name);
+					BlueprintTools.AddBlueprint(RaceExpContext, skin);
 
 					// Body model arrays. Points to the AssetID of the body models EE in the KEE_Body_XYZ blueprint.
 					originalBodyM = skin.m_MaleArray[0];
@@ -75,11 +73,11 @@ namespace DP_WOTR_PlayableRaceExp.Races
 					skin.m_MaleArray = Helpers.Arr(new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_body01_m_de")});
 					skin.m_FemaleArray = Helpers.Arr(new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_body01_f_de")});
 
-					Main.RaceExpContext.Logger.LogDebug("Adding body EEs to VisualPresets:");
+					RaceExpContext.Logger.LogDebug("Adding body EEs to VisualPresets");
 				});
 
 				// Create a set of new unique VisualPreset blueprints based on the donor race originals.
-				Main.RaceExpContext.Logger.LogDebug("Creating VisualPreset blueprints:");
+				RaceExpContext.Logger.LogDebug("Creating VisualPreset blueprints:");
 
 				for (int i = 0; i < presets.Length; i++)
 				{
@@ -87,11 +85,11 @@ namespace DP_WOTR_PlayableRaceExp.Races
 					// a stack overflow if used here. Use the older version instead.
 					presets[i] = Helpers.CreateCopyAlt(race.m_Presets[i].Get(), p => {
 
-						Main.RaceExpContext.Logger.LogDebug($"New preset {i} (original name {p.name}):");
+						RaceExpContext.Logger.LogDebug($"New preset {i} (original name {p.name}):");
 
 						p.name = p.name.Replace("Elf", "DPDrow");
-						p.AssetGuid = Main.RaceExpContext.Blueprints.GetGUID(p.name);
-						BlueprintTools.AddBlueprint(Main.RaceExpContext, p);
+						p.AssetGuid = RaceExpContext.Blueprints.GetGUID(p.name);
+						BlueprintTools.AddBlueprint(RaceExpContext, p);
 
 						p.m_Skin = skin.ToReference<KingmakerEquipmentEntityReference>();
 					});
@@ -100,7 +98,7 @@ namespace DP_WOTR_PlayableRaceExp.Races
 				// Adds the newly created VisualPresets to the "m_Presets" array in the new base race blueprint.
 				race.m_Presets = presets.Select(p => p.ToReference<BlueprintRaceVisualPresetReference>()).ToArray();
 
-				Main.RaceExpContext.Logger.LogDebug("Adding racial stat bonuses:");
+				RaceExpContext.Logger.LogDebug("Adding racial stat bonuses:");
 
 				// Populate the base race blueprint "Components" array. This allows for defining custom racial stat bonuses/penalties.
 				// Not strictly necessary in this instance as the new values are identical to the original Elf values.
@@ -110,7 +108,7 @@ namespace DP_WOTR_PlayableRaceExp.Races
 					stat.Value = 2;
 					stat.Stat = StatType.Dexterity;
 
-					Main.RaceExpContext.Logger.LogDebug($"{stat.Stat} = {string.Format("{0:+#;-#;+0}", stat.Value)}");
+					RaceExpContext.Logger.LogDebug($"{stat.Stat} = {string.Format("{0:+#;-#;+0}", stat.Value)}");
 
 				});
 				// +2 Cha.
@@ -119,7 +117,7 @@ namespace DP_WOTR_PlayableRaceExp.Races
 					stat.Value = 2;
 					stat.Stat = StatType.Charisma;
 
-					Main.RaceExpContext.Logger.LogDebug($"{stat.Stat} = {string.Format("{0:+#;-#;+0}", stat.Value)}");
+					RaceExpContext.Logger.LogDebug($"{stat.Stat} = {string.Format("{0:+#;-#;+0}", stat.Value)}");
 
 				});
 				// -2 Con.
@@ -131,13 +129,13 @@ namespace DP_WOTR_PlayableRaceExp.Races
 					stat.m_CheckedFacts = Helpers.Arr(BlueprintTools.Ref<BlueprintUnitFactReference>("325f078c584318849bfe3da9ea245b9d"));
 					stat.InvertCondition = true;
 
-					Main.RaceExpContext.Logger.LogDebug($"{stat.Stat} = {string.Format("{0:+#;-#;+0}", stat.Value)}");
+					RaceExpContext.Logger.LogDebug($"{stat.Stat} = {string.Format("{0:+#;-#;+0}", stat.Value)}");
 
 				});
 
 				race.SelectableRaceStat = false;
 
-				Main.RaceExpContext.Logger.LogDebug("Adding body part EEs.");
+				RaceExpContext.Logger.LogDebug("Adding body part EEs.");
 
 				// Populate "MaleOptions" / "FemaleOptions" arrays, which define available body part options in the character creator.
 				race.MaleOptions.Beards = Array.Empty<EquipmentEntityLink>();
@@ -148,17 +146,17 @@ namespace DP_WOTR_PlayableRaceExp.Races
 				EquipmentEntityLink[] MaleHeadArray = [
 					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Head01_M_DPDrow")},
 					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Head02_M_DPDrow")},
-					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Head03_M_DPDrow")},
+					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Head05_M_DPDrow")},
 					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Head04_M_DPDrow")},
-					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Head05_M_DPDrow")}
+					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Head03_M_DPDrow")}
 				];
 
 				EquipmentEntityLink[] FemHeadArray = [
-					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Head01_F_DPDrow")},
-					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Head02Ember_F_DPDrow")},
 					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Head03_F_DPDrow")},
-					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Head04_F_DPDrow")},
-					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Head05_F_DPDrow")}
+					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Head01_F_DPDrow")},
+					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Head05_F_DPDrow")},
+					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Head02Ember_F_DPDrow")},
+					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Head04_F_DPDrow")}
 				];
 
 				race.MaleOptions.m_Heads = Helpers.Arr(MaleHeadArray);
@@ -166,15 +164,37 @@ namespace DP_WOTR_PlayableRaceExp.Races
 				race.FemaleOptions.m_Heads = Helpers.Arr(FemHeadArray);
 				race.FemaleOptions.m_HeadsCache = null;
 
+				// Define new eyebrow arrays. Make sure these match the same order as the head they go with! (Ask me how I know....)
+				EquipmentEntityLink[] MaleBrowArray = [
+					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Brows01_M_DPDrow")},
+					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Brows02_M_DPDrow")},
+					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Brows05_M_DPDrow")},
+					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Brows04_M_DPDrow")},
+					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Brows03_M_DPDrow")}
+				];
+
+				EquipmentEntityLink[] FemBrowArray = [
+					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Brows03_F_DPDrow")},
+					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Brows01_F_DPDrow")},
+					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Brows05_F_DPDrow")},
+					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Brows02Ember_F_DPDrow")},
+					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Brows04_F_DPDrow")}
+				];
+
+				race.MaleOptions.m_Eyebrows = Helpers.Arr(MaleBrowArray);
+				race.MaleOptions.m_EyebrowsCache = null;
+				race.FemaleOptions.m_Eyebrows = Helpers.Arr(FemBrowArray);
+				race.FemaleOptions.m_EyebrowsCache = null;
+
 				// Define new hair arrays.
 				EquipmentEntityLink[] MaleHairArray = [
 					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Hair00Slick_M_DPDrow")},
 					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Hair07PonytailClassic_M_DPDrow")},
-					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Hair01MediumSide_M_DPDrow")},
 					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Hair02MediumTinyBraid_M_DPDrow")},
+					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Hair01MediumSide_M_DPDrow")},
 					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Hair03LongBraids_M_DPDrow")},
-					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Hair04LongStraight_M_DPDrow")},
 					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Hair06MediumBun_M_DPDrow")},
+					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Hair04LongStraight_M_DPDrow")},
 					// Bald. EE_EMPTY_HairStyleColors.
 					new EquipmentEntityLink {AssetId = "b85db19d7adf6aa48b5dd2bb7bfe1502"}
 				];
@@ -184,9 +204,9 @@ namespace DP_WOTR_PlayableRaceExp.Races
 					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Hair01LongEmber_F_DPDrow")},
 					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Hair02FrenchBraid_F_DPDrow")},
 					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Hair04PonyTailLush_F_DPDrow")},
-					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Hair03Pompadour_F_DPDrow")},
-					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Hair06MediumAnevia_F_DPDrow")},
 					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Hair08SideKare_F_DPDrow")},
+					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Hair06MediumAnevia_F_DPDrow")},
+					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Hair03Pompadour_F_DPDrow")},
 					// Bald. EE_EMPTY_HairStyleColors.
 					new EquipmentEntityLink {AssetId = "b85db19d7adf6aa48b5dd2bb7bfe1502"}
 				];
@@ -195,35 +215,13 @@ namespace DP_WOTR_PlayableRaceExp.Races
 				race.MaleOptions.m_HairCache = null;
 				race.FemaleOptions.m_Hair = Helpers.Arr(FemHairArray);
 				race.FemaleOptions.m_HairCache = null;
-
-				// Define new eyebrow arrays.
-				EquipmentEntityLink[] MaleBrowArray = [
-					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Brows01_M_DPDrow")},
-					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Brows02_M_DPDrow")},
-					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Brows03_M_DPDrow")},
-					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Brows04_M_DPDrow")},
-					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Brows05_M_DPDrow")}
-				];
-
-				EquipmentEntityLink[] FemBrowArray = [
-					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Brows01_F_DPDrow")},
-					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Brows02Ember_F_DPDrow")},
-					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Brows03_F_DPDrow")},
-					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Brows04_F_DPDrow")},
-					new EquipmentEntityLink {AssetId = EE_Bundle_Asset_IDs.Get_Bundle_Asset_ID("EE_Brows05_F_DPDrow")}
-				];
-
-				race.MaleOptions.m_Eyebrows = Helpers.Arr(MaleBrowArray);
-				race.MaleOptions.m_EyebrowsCache = null;
-				race.FemaleOptions.m_Eyebrows = Helpers.Arr(FemBrowArray);
-				race.FemaleOptions.m_EyebrowsCache = null;
 			});
 
 			// Create new racial default portraits in the character creator.
 
-			Main.RaceExpContext.Logger.LogDebug("Creating portrait presets:");
+			RaceExpContext.Logger.LogDebug("Creating portrait presets:");
 
-			var portraitmale = Helpers.CreateBlueprint<BlueprintPortrait>(Main.RaceExpContext, "DPDrow_PortraitMale", p => {
+			var portraitmale = Helpers.CreateBlueprint<BlueprintPortrait>(RaceExpContext, "DPDrow_PortraitMale", p => {
 				p.Data = new()
 				{
 					PortraitCategory = PortraitCategory.Wrath,
@@ -240,7 +238,7 @@ namespace DP_WOTR_PlayableRaceExp.Races
 
 			Helpers.AppendInPlace(ref BlueprintRoot.Instance.CharGen.m_Portraits, portraitmale.ToReference<BlueprintPortraitReference>());
 
-			var portraitfem = Helpers.CreateBlueprint<BlueprintPortrait>(Main.RaceExpContext, "DPDrow_PortraitFem", p => {
+			var portraitfem = Helpers.CreateBlueprint<BlueprintPortrait>(RaceExpContext, "DPDrow_PortraitFem", p => {
 				p.Data = new()
 				{
 					PortraitCategory = PortraitCategory.Wrath,
@@ -257,13 +255,13 @@ namespace DP_WOTR_PlayableRaceExp.Races
 
 			Helpers.AppendInPlace(ref BlueprintRoot.Instance.CharGen.m_Portraits, portraitfem.ToReference<BlueprintPortraitReference>());
 
-			Main.RaceExpContext.Logger.LogDebug("Creating race blueprint:");
+			RaceExpContext.Logger.LogDebug("Creating race blueprint:");
 
-			BlueprintTools.AddBlueprint(Main.RaceExpContext, DPDrowRace);
+			BlueprintTools.AddBlueprint(RaceExpContext, DPDrowRace);
 
 			Helpers.AppendInPlace(ref Races, DPDrowRace.ToReference<BlueprintRaceReference>());
 
-			Main.RaceExpContext.Logger.LogDebug("Installation of added Drow race complete.");
+			RaceExpContext.Logger.LogDebug("Installation of added Drow race complete.");
 		}
 
 		public static void Uninstall()
