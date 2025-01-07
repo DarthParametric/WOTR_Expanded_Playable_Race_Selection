@@ -17,5 +17,6 @@ Alternatively, you can use ModFinder to automate the installation process.
 - Relies on various setup, utility and helper scripts from [TabletopTweaks](https://github.com/Vek17/TabletopTweaks-Core) by Vek17, some originally by way of [EldritchArcana](https://github.com/elmindra/pathfinder-mods) by elmindra.
 - microsoftenator2022 - Provided lots of help with troubleshooting my terrible code and various Unity issues.
 - Kurufinve - Coached me through the teething issues of my Rogue Trader helmet mod, allowing me to learn the ins and outs of creating the required assets and the general Unity template workflow. Also provided a custom version of Owlcat's Unity template for Wrath, allowing for vanilla type inheritance.
+- EdgarEbonfowl provided the code for fixing the mount offsets of added races.
 - Everyone in the `#mod-dev-technical` channel of the Owlcat Discord server for various modding-related discussions and suggestions, help troubleshooting issues, and answering general questions.
 

@@ -21,11 +21,11 @@ namespace DP_WOTR_PlayableRaceExp.Races
 
 		public static void Install()
 		{
-			RaceExpContext.Logger.Log("Creating blueprints for added Drow race.");
+			RaceExpContext.Logger.Log("Creating blueprints for added Drow race");
 
 			var OrigElf = RaceRefs.ElfRace;
 
-			RaceExpContext.Logger.LogDebug($"Cloning original race blueprint {OrigElf.name}.");
+			RaceExpContext.Logger.LogDebug($"Cloning original race blueprint {OrigElf.name}");
 
 			// Copy vanilla XYZRace blueprint and replace its values.
 			DPDrowRace = Helpers.CreateCopyAlt<BlueprintRace>(OrigElf, race => {
@@ -73,7 +73,7 @@ namespace DP_WOTR_PlayableRaceExp.Races
 					skin.m_MaleArray = Helpers.Arr(new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_body01_m_de")});
 					skin.m_FemaleArray = Helpers.Arr(new EquipmentEntityLink {AssetId = EE_Names_IDs.Get_EE_ID("ee_body01_f_de")});
 
-					RaceExpContext.Logger.LogDebug("Adding body EEs to VisualPresets");
+					RaceExpContext.Logger.LogDebug("Adding body EEs to VisualPresets:");
 				});
 
 				// Create a set of new unique VisualPreset blueprints based on the donor race originals.
@@ -85,7 +85,7 @@ namespace DP_WOTR_PlayableRaceExp.Races
 					// a stack overflow if used here. Use the older version instead.
 					presets[i] = Helpers.CreateCopyAlt(race.m_Presets[i].Get(), p => {
 
-						RaceExpContext.Logger.LogDebug($"New preset {i} (original name {p.name}):");
+						RaceExpContext.Logger.LogDebug($"New preset {i} (original name \"{p.name}\")");
 
 						p.name = p.name.Replace("Elf", "DPDrow");
 						p.AssetGuid = RaceExpContext.Blueprints.GetGUID(p.name);
@@ -135,7 +135,7 @@ namespace DP_WOTR_PlayableRaceExp.Races
 
 				race.SelectableRaceStat = false;
 
-				RaceExpContext.Logger.LogDebug("Adding body part EEs.");
+				RaceExpContext.Logger.LogDebug("Adding body part EEs");
 
 				// Populate "MaleOptions" / "FemaleOptions" arrays, which define available body part options in the character creator.
 				race.MaleOptions.Beards = Array.Empty<EquipmentEntityLink>();
@@ -261,7 +261,11 @@ namespace DP_WOTR_PlayableRaceExp.Races
 
 			Helpers.AppendInPlace(ref Races, DPDrowRace.ToReference<BlueprintRaceReference>());
 
-			RaceExpContext.Logger.LogDebug("Installation of added Drow race complete.");
+			RaceExpContext.Logger.LogDebug("Fixing race mount offsets:");
+
+			FixRaceMountOffsets.AddRaceToMountFixes(DPDrowRace, OrigElf);
+
+			RaceExpContext.Logger.LogDebug("Installation of added Drow race complete");
 		}
 
 		public static void Uninstall()

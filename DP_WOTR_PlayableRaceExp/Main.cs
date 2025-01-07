@@ -1,13 +1,14 @@
 ﻿using DP_WOTR_PlayableRaceExp.ModLogic;
 using DP_WOTR_PlayableRaceExp.Races;
 using DP_WOTR_PlayableRaceExp.Utilities;
+using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.BundlesLoading;
 using Kingmaker.Modding;
 using Kingmaker.ResourceLinks;
 using Kingmaker.SharedTypes;
+using Kingmaker.Visual.Mounts;
 using UnityEngine;
-using UnityModManagerNet;
 using static UnityModManagerNet.UnityModManager;
 
 namespace DP_WOTR_PlayableRaceExp;
@@ -17,7 +18,7 @@ internal static class Main {
 	public static Dictionary<string, string> AssetsInBundles = new();
 	public static HashSet<string> Bundles = new();
 	
-	static bool Load(UnityModManager.ModEntry modEntry)
+	static bool Load(ModEntry modEntry)
 	{
 		var harmony = new Harmony(modEntry.Info.Id);
 		RaceExpContext = new ModContextPlayableRaceExp(modEntry);
@@ -48,7 +49,7 @@ internal static class Main {
 
 				// Since imported shaders are broken, swap the shaders in the bundle with a donor vanilla one.
 				EquipmentEntityLink DonorHead = new EquipmentEntityLink { AssetId = EE_Names_IDs.Get_EE_ID("ee_head01_m_hm") };
-				RaceExpContext.Logger.LogDebug($"Main.TryLoadBundle: Harvesting vanilla donor head ee_head01_m_hm, asset ID {DonorHead.AssetId}");
+				RaceExpContext.Logger.LogDebug($"Main.TryLoadBundle: Harvesting vanilla donor head ee_head01_m_hm, AssetID {DonorHead.AssetId}");
 
 				if (shadersByName == null)
 				{
@@ -71,7 +72,7 @@ internal static class Main {
 							for (int i = 0; i < entry.Materials.Length; i++)
 							{
 								var material = entry.Materials[i];
-								RaceExpContext.Logger.LogDebug($"Main.TryLoadBundle: Fixing material {i}, {material.name}");
+								RaceExpContext.Logger.LogDebug($"Main.TryLoadBundle: Fixing material {i + 1}, {material.name}");
 
 								if (material == null)
 								{
@@ -81,7 +82,7 @@ internal static class Main {
 								
  								if (material.shader != null && shadersByName.TryGetValue(material.shader.name, out var replacement))
 								{
-									RaceExpContext.Logger.LogDebug("Main.TryLoadBundle: Attempting to replace shader with donor's...");
+									RaceExpContext.Logger.LogDebug("Main.TryLoadBundle: Attempting to replace bundle shader with donor shader");
 									material.shader = replacement;
 								}
 							}
@@ -90,7 +91,7 @@ internal static class Main {
 				}
 				catch (Exception e)
 				{
-					RaceExpContext.Logger.LogDebug($"Caught exception trying to replace material:\n{e}");
+					RaceExpContext.Logger.LogDebug($"Caught an exception trying to replace bundle material's shader!\n{e}");
 				}
 
 				return false;
@@ -152,18 +153,18 @@ internal static class Main {
 			{
 				if (Initialized)
 				{
-					RaceExpContext.Logger.LogDebug("Already initialised blueprints cache patch.");
+					RaceExpContext.Logger.LogDebug("Already initialised blueprints cache patch");
 					return;
 				}
 
 				Initialized = true;
 
-				RaceExpContext.Logger.Log("Installing race/s.");
+				RaceExpContext.Logger.Log("Installing race/s");
 				DPDrow.Install();
 			}
 			catch (Exception e)
 			{
-				RaceExpContext.Logger.LogException(e, "Mod initialisation failed.");
+				RaceExpContext.Logger.LogException(e, "Mod initialisation failed!");
 			}
 		}
 	}
